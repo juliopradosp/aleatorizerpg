@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WBGR4EZD8H"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-WBGR4EZD8H');
+	</script>
+	<title>Aleatorize.online - Gerador De Heróis</title>
+	<link rel="stylesheet" href="estilo.css">
+		<!--     BOOTSTRAP E JQUERY              -->
+	<script src="../bootstrap5/jquery-3.7.1.min.js" ></script>
+	<link rel="stylesheet" href="../bootstrap5/css/bootstrap.min.css">
+	<script src="../bootstrap5/js/bootstrap.min.js" ></script>
+
+  	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script  src="js.js"></script>
+</head>
+<body>
+	<div id="tela">
+		<div id="telaInicial">
+
+			<h1 class="text-center">
+				Gerador aleatório para 
+				</h1>
+				<a href="https://jamboeditora.com.br/produto/mutantes-malfeitores/" target="_blank">
+				<img src="logo.png" width="300" style="display:block;margin: 0 auto;">
+				</a>
+			<hr>
+			<div id="botaoGerar">
+				<input onchange="atualizaNP()" type="range" id="nivelPoder" name="nivelPoder" min="1" max="20" style="width:80%;display: block; margin: 0 auto">
+				<br>
+				<span style="display:block; text-align: center;">
+					NP:
+					<span id="NumeroNP">
+						11
+					</span>
+				</span>
+				<br>
+				<button style="display: block; margin: 0 auto;" type="button" class="btn btn-danger" onclick="gerarHeroi();">
+					Gerar herói
+				</button>
+			</div>
+			<div id="botaoImprimir" style="display: none;">
+				<button type="button" class="btn btn-danger" onclick="tentarNovamente()">
+						Tentar novamente
+				</button>
+			</div>
+			<div>
+				<strong style="color:red;">Os personagens aqui são gerados idealmente para serem PDMs, pois não é considerada a quantidade de pontos total, apenas os limites</strong>
+				<br>
+				<p>
+					Pontos para PDJ distribuir: 
+					<span id="pontosDistribuir">
+					</span>
+					
+				</p>
+				<h5>LIMITES</h5>
+				<span>
+					Ataque + Efeito: 
+					<span class="DobroNP">
+					</span>
+					<br>
+					<span>
+						(se efeito não precisar de ataque, limite=NP).
+					</span>
+				</span>
+				<br>
+				<span>
+					Esquiva/Aparar + Resistência:
+					<span class="DobroNP">
+					</span>
+				</span>
+				<br>
+				<span>
+					Fortitude + Vontade: 
+					<span class="DobroNP">
+					</span>
+				</span>
+				<br>
+				<span>
+				Habilidade + Perícia + Vantagem: 
+					<span id="limitePericia">
+					</span>
+				</span>
+			</div>
+		</div>
+		<div id="ficha" style="display: none;" class="borda">
+			<img src="logo.png" width="200" style="display:block; opacity: 0.5;">
+			
+			<div id="nomeHeroi">
+				<form method="get">
+					<input type="text" id="inputNome" placeholder="Nome do herói">
+					<button onclick="imprimirFicha()" type="button" class="btn btn-info">
+					Finalizar e imprimir
+					</button>
+				</form>
+			</div>
+
+			 
+			<h3 class="right">
+				NP: 
+				<span id="fichaNp">
+					0
+				</span>
+			</h3>
+			
+				<!-- 
+				Conceito: 
+				<span id="fichaConceito">
+					
+				</span>
+				-->
+			<!--
+			<p>
+				Gênero: 
+				<span id="fichaGenero">
+					M/F
+				</span>
+
+				Idade: 
+				<span id="fichaIdade">
+					
+				</span>
+
+				Altura: 
+				<span id="fichaAltura">
+					
+				</span>
+			</p>
+			-->
+			<p>
+				Força:
+				<span id="fichaForca"></span>
+				Agilidade:
+				<span id="fichaAgilidade"></span>
+				Luta:
+				<span id="fichaLuta"></span>
+				Prontidão:
+				<span id="fichaProntidao"></span>
+			</p>
+			<p>
+				Vigor:
+				<span id="fichaVigor"></span>
+				Destreza:
+				<span id="fichaDestreza"></span>
+				Intelecto:
+				<span id="fichaIntelecto"></span>
+				Presença:
+				<span id="fichaPresenca"></span>
+			</p>
+			<div class="right borda">
+				<h5>Defesas</h5>
+				<p>
+					Esquiva(Agi): 
+					<span id="fichaEsquiva">
+					</span>
+					<br>
+					Aparar(Lut): 
+					<span id="fichaAparar">
+					</span>
+					<br>
+					Fortitude(Vig):
+					<span id="fichaFortitude">
+					</span>
+					<br>
+					Vontade(Pro): 
+					<span id="fichaVontade">
+					</span>
+					<br>
+					Resistência(Vig):
+					<span id="fichaResistencia">
+					</span>
+				</p>
+			</div>
+			<div class="borda">
+				<p><h5>Ataques</h5>
+				</p>
+				<p>
+					
+				</p>
+				<p>
+					Combate CaC: 
+					<span id="cacGrad">
+							
+					</span>
+					<br>
+					<span id="cacPoderes">
+					</span>
+				</p>
+				<p>
+					Combate a distancia:
+					<span id="distGrad">
+							
+					</span>
+					
+					<br>
+					<span id="distPoderes">
+					</span>
+				</p>
+			</div>
+			<div>
+					<h5>Poderes & dispositivos</h5>
+					<span id="fichaPoderes">
+						
+					</span>
+			</div>
+			<div>
+				<h5>Perícias</h5>
+				<span id="fichaPericias"></span>
+			</div>
+			<div>
+				<h5>Vantagens</h5>
+				<span id="fichaVantagens"></span>
+			</div>
+
+		</div> <!-- fim ficha -->
+	</div>
+</body>
+</html>
