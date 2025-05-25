@@ -15,15 +15,19 @@ a, a:hover{
 	margin: 0 auto;
 }
 
+
+
 div#cabecalho{
 	padding-top: 100px;
 	padding-bottom: 20px;
-	/* pra não fica atrás do menu */
+	margin: 0 auto;
+	/* pra não ficar atrás do menu */
 }
 
-body{
+
+
+body, #cabecalho{
 	width: 100%;
-	height: 100%;
 	margin: 0;
 	padding: 0;
 	background-color: white;
@@ -56,8 +60,13 @@ footer{
 nav ul li{
 	padding-left: 20px;
 	padding-right: 20px;
-	
 }
+
+#logoMenu{
+
+	max-width: 300px;
+}
+
 
 nav ul li a.nav-link{
 	font-size: 1.6em;
@@ -92,16 +101,13 @@ div.boxPrincipal{
 	background-color: white;
 	padding: 10px;
 	padding-bottom: 200px;
-	border: none;
+	border: 1px solid black;
+	border-radius: 10px;
+	overflow-x: hidden;
 	
 	
 }
 
-a#linkComoUsar{
-	max-width: 50%;
-	text-decoration: none;
-	color: red;
-}
 
 .borda{
 	border: 1px solid black;
@@ -109,17 +115,9 @@ a#linkComoUsar{
 }
 
 
-
-
-a#linkComoUsar:hover{
-	color: white;
-	background-color: red;
-}
-
-
 div#log{
 	background-color: white;
-	padding-top: 80px;
+	padding-top: 10px;
 	border: 1px solid black;	
 	border-radius: 1%;
 	height: 500px;
@@ -140,9 +138,7 @@ div.divFlex{
 }
 
 
-div#divBotoesImprime a.btn{
-	color: white;
-}
+
 
 /* Tipografia *************************************************/
 body{
@@ -200,6 +196,10 @@ div#log.imprimir{
 }
 
 @media (max-width: 575.98px) {
+
+	div#cabecalho{
+		width: 90%;
+	}
 
 	div.boxPrincipal{
 	padding-bottom: 20px;
