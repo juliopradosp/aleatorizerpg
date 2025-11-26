@@ -193,43 +193,6 @@ div#log.imprimir{
 		
 }
 
-@media (max-width: 575.98px) {{
-
-	div#cabecalho{
-		width: 90%;
-	}
-
-	div.boxPrincipal{
-	padding-bottom: 20px;
-	}
-
-	nav ul li{
-	padding-left: 10px;
-	
-	}
-
-	nav ul li a.nav-link{
-	font-size: 0.8em;
-	}
-	
-}
-/* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767.98px) {
-
-
-}
-
-/* Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) {
-
-
-}
-
-/* Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) {
-
-}
-
 
 
 
