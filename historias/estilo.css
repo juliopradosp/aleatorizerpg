@@ -1,0 +1,136 @@
+
+
+    /* --- Estilo do Slider (Carrossel Arrastável) --- */
+    .slider-container {
+        position: relative;
+        width: 100%;
+        height: 180px; /* Altura fixa um pouco maior que as imagens */
+        overflow-x: hidden; /* Esconde a barra de rolagem padrão */
+        overflow-y: hidden;
+        white-space: nowrap; /* Impede que os itens quebrem linha */
+        cursor: grab; /* Cursor de mão aberta */
+        padding: 15px;
+        user-select: none; /* Impede seleção de texto ao arrastar */
+    }
+
+    .slider-container:active {
+        cursor: grabbing; /* Mão fechada ao arrastar */
+    }
+
+    /* Item individual do slider */
+    .story-item {
+        display: inline-block;
+        width: 150px; /* Largura fixa (padrão 1x1) */
+        height: 150px; /* Altura fixa */
+        margin-right: 20px;
+        margin-left: 5px;
+        border-radius: 10px;
+        position: relative;
+        transition: transform 0.3s ease, filter 0.3s ease;
+        vertical-align: top;
+        overflow: hidden;
+    }
+
+    .story-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none; /* Impede arrastar a imagem fantasma */
+    }
+
+    /* Efeitos de Hover e Ativo */
+    .story-item:hover {
+        transform: scale(1.05);
+        border-color: #d4af37;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .story-item.active {
+        box-shadow: 1px 1px 15px #d4af37;
+        transform: scale(1.1);
+    }
+
+    /* Overlay com o nome do personagem */
+    .story-caption {
+        position: absolute;
+        color: white;
+        text-shadow:3px 2px 3px black;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 5px 0;
+        white-space: normal; /* Permite que o texto quebre se for longo */
+    }
+
+    /* --- Div de Conteúdo --- */
+    #conteudo-historia {
+        border: 1px dotted black;
+        min-height: 400px;
+        padding: 100px;
+        margin-top: 30px;
+        animation: fadeIn 0.5s ease-in-out;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    /* Animação suave ao trocar conteúdo */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Botão Scroll Hint (Opcional) */
+    .scroll-hint {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        font-size: 2rem;
+        animation: bounceRight 2s infinite;
+        z-index: 20;
+    }
+
+    @keyframes bounceRight {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(-50%) translateX(0);}
+        40% {transform: translateY(-50%) translateX(-10px);}
+        60% {transform: translateY(-50%) translateX(-5px);}
+    }
+
+
+     /* Formatação artigos de história */
+    .session-article {
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 4px;
+        text-align: justify;
+    }
+    .session-title {
+        color: #2c3e50;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+        text-align: center;
+    }
+    .sub-heading {
+        color: #d35400; /* Cor de destaque para subtítulos */
+        margin-top: 20px;
+    }
+    .highlight {
+        font-weight: bold;
+        color: #2980b9;
+    }
+
+     /* MEDIA QUERIES */
+
+    @media (max-width: 768px){
+
+        #conteudo-historia{
+            padding: 5px!important;
+            border: none;
+        }
+
+        .session-article {
+            padding: 5px;
+        }

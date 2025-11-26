@@ -104,8 +104,6 @@ div.boxPrincipal{
 	border: 1px solid black;
 	border-radius: 10px;
 	overflow-x: hidden;
-	
-	
 }
 
 
@@ -195,7 +193,7 @@ div#log.imprimir{
 		
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 575.98px) {{
 
 	div#cabecalho{
 		width: 90%;
@@ -214,7 +212,7 @@ div#log.imprimir{
 	font-size: 0.8em;
 	}
 	
-
+}
 /* Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
 
