@@ -24,6 +24,24 @@ div#cabecalho{
 	/* pra não ficar atrás do menu */
 }
 
+/* --- Animação da Logo --- */
+@keyframes flutuar {
+    0% {
+        transform: translateY(0px); /* Posição inicial */
+    }
+    50% {
+        transform: translateY(-15px); /* Sobe 15 pixels */
+    }
+    100% {
+        transform: translateY(0px); /* Retorna para a base */
+    }
+}
+
+.logo-flutuante {
+    /* Aplica a animação: nome (flutuar), duração (3s), ritmo (suave nas pontas) e repetição (infinita) */
+    animation: flutuar 3s ease-in-out infinite; 
+}
+
 
 
 body, #cabecalho{
@@ -39,13 +57,17 @@ body, #cabecalho{
 	
 }
 
-footer{
-	width: 100%;
-	color: lightgray;
-	text-align: center;
-	background-color: black;
-	padding: 10px;
-	bottom: 0;
+
+footer p {
+    color: #333; /* Cinza escuro para leitura suave no fundo branco */
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+footer hr {
+    width: 50%;
+    margin: 0 auto;
+    opacity: 0.1;
 }
 
 
@@ -135,7 +157,9 @@ div.divFlex{
 	flex-basis: 100px;
 }
 
-
+.scroll-hint {
+    pointer-events: none; 
+}
 
 
 /* Tipografia *************************************************/
@@ -167,6 +191,34 @@ div#log.imprimir{
 
 
 /* Media Queries *************************************************/
+@media (max-width: 991.98px) {
+    #navbarNav {
+        background-color: #ffffff; /* Fundo totalmente branco */
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra leve para destacar do fundo do site */
+        margin-top: 10px;
+    }
+
+    #navbarNav .nav-link {
+        color: #000000 !important; /* Texto preto */
+        border-bottom: 1px solid #f0f0f0; /* Linha sutil separando as opções */
+        padding: 10px 0;
+    }
+
+    /* Remove a linha da última opção do menu */
+    #navbarNav .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Garante que o botão hambúrguer tenha uma borda visível se necessário */
+    .navbar-toggler {
+        border-color: rgba(0,0,0,0.1);
+        background-color: rgba(255,255,255,0.8); /* Fundo leve no botão para não sumir na imagem de dados */
+    }
+}
+
+
 
 @media print {
 	body{

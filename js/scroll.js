@@ -1,4 +1,3 @@
-
 var menuItems = document.querySelectorAll(".menu a[href^='#']");
 /* seleciona apenas os links internos */
 
@@ -19,3 +18,5 @@ function scrollParaDiv(event){
   });
   /*coordenadas de destino x e y*/
 }
+
+
