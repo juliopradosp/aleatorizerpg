@@ -95,6 +95,10 @@ nav ul li a.nav-link{
 	color: black;
 }
 
+.scroll-hint {
+    pointer-events: none; 
+}
+
 
 
 /* Cards geradores *******************************/
@@ -157,9 +161,6 @@ div.divFlex{
 	flex-basis: 100px;
 }
 
-.scroll-hint {
-    pointer-events: none; 
-}
 
 
 /* Tipografia *************************************************/
@@ -192,6 +193,9 @@ div#log.imprimir{
 
 /* Media Queries *************************************************/
 @media (max-width: 991.98px) {
+
+	
+
     #navbarNav {
         background-color: #ffffff; /* Fundo totalmente branco */
         padding: 15px;
@@ -244,46 +248,3 @@ div#log.imprimir{
 	  }
 		
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
