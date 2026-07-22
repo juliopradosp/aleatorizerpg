@@ -177,6 +177,26 @@ div#log.imprimir{
 
 /* Imagens *************************************************/
 
+.img-quadrada {
+    width: 80%;
+	margin: 15px auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    cursor: pointer;
+	box-shadow: 5px 5px 10px black;
+    transition: transform 0.3s ease; 
+}
+
+.img-quadrada:hover {
+    transform: scale(1.03); 
+}
+
+#imgModalAmpliada {
+    max-height: 85vh; /* Limita a altura a 85% da altura da tela (viewport height) */
+    width: auto;      /* Deixa a largura se ajustar sozinha para não achatar a imagem */
+    object-fit: contain; /* Garante que a imagem caiba inteiramente dentro desse limite */
+    margin: 0 auto;   /* Garante que a imagem fique centralizada horizontalmente */
+}
 
 /* Cards ****************************************************/
 
