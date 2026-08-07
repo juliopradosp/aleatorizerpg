@@ -76,8 +76,9 @@ function gerarPersonagem(pos){
 		'cenario':'',
 		'raca': '',
 		'estagio':0,
-		'armadura':'',
+		'armadura':0,
 		'arma':'',
+		'raciais':'',
 		'complicacoesMa':[],
 		'complicacoesMe':[],
 		'atributos':{
@@ -136,6 +137,8 @@ personagem.cenario = document.getElementById('selectCenario').value;
 
 if (personagem.cenario=="Fantasia Medieval") {
 
+
+
 }
 
 
@@ -184,6 +187,83 @@ if (personagem.cenario=="Fantasia Medieval") {
 	return listaRacas[randomAte(listaRacas.length)];
 	}
 	personagem.raca=definirRaca();
+
+	switch (personagem.raca){
+		case "Anão":{
+			personagem.raciais=("MOVIMENTAÇÃO REDUZIDA, RESISTENTE, VISÃO NO ESCURO.");	
+			personagem.atributos.vigor++;
+			personagem.movimento--;
+			break;
+		}
+		case "Androide":{
+			personagem.raciais=("CONSTRUTO.");
+			personagem.complicacoesMa.push("Forasteiro","Pacifista","Voto");	
+			break;
+		}
+		case "Aquariano":{
+			personagem.raciais=("AQUÁTICO, DEPENDÊNCIA, RESISTÊNCIA, VISÃO NO ESCURO.");
+			personagem.resistencia+=1;
+			break;
+		}
+		case "Aviano":{
+			personagem.raciais=("FRÁGIL, MOVIMENTAÇÃO REDUZIDA, SENTIDOS AGUÇADOS, VOO.");
+			personagem.complicacoesMe.push("Não sabe nadar");
+			personagem.movimento--;
+			personagem.resistencia--;
+			break;
+		}
+		case "Elfo":{
+			personagem.raciais=("ÁGIL, VISÃO NO ESCURO.");
+			personagem.complicacoesMe.push("Desastrado");
+			personagem.atributos.agilidade++;
+			break;
+		}
+		case "Meio-elfo":{
+			personagem.raciais=("HERANÇA (Agi), VISÃO NO ESCURO.");
+			personagem.complicacoesMe.push("Forasteiro");
+			personagem.atributos.agilidade++;
+			break;
+		}
+		case "Humano":{
+			personagem.raciais=("ADAPTÁVEL.");
+			break;
+		}
+		case "Pequenino":{
+			personagem.raciais=("ESPIRITUOSO, MOVIMENTAÇÃO REDUZIDA, TAMANHO -1.");
+			personagem.vantagens.push("Sorte");
+			personagem.movimento--;
+			break;
+		}
+		case "Rakashano":{
+			personagem.raciais=("ÁGIL, INIMIGO RACIAL, MORDIDA/GARRAS, VISÃO NO ESCURO.");
+			personagem.complicacoesMa.push("Sanguinário");
+			personagem.complicacoesMe.push("Não sabe nadar");
+			personagem.atributos.agilidade++;
+			break;
+		}
+		case "Sáurio":{
+			personagem.raciais=("ARMADURA +2, FRAQUEZA AMBIENTAL (Frio), MORDIDA, SENTIDOS AGUÇADOS.");
+			personagem.complicacoesMe.push("Forasteiro");
+			personagem.resistencia+=2;
+			break;
+		}
+		case "Celestial":{
+			personagem.vantagens.push("Atraente");
+			personagem.complicacoesMa.push("Código de Honra","Voto");
+			personagem.raciais=("VOO.");
+			break;
+		}
+		case "Guardião":{
+			personagem.vantagens.push("Campeão");
+			personagem.raciais=("ADAPTÁVEL, VIGOROSO, VOTO (Maior: Proteger a humanidade).");
+			personagem.atributos.vigor++;
+			break;
+		}
+
+		default:
+			console.log("Nenhuma raça definida!");
+	}
+
 /************ ATRIBUTOS ***********************************/
 
 	function definirAtributos(){
@@ -426,7 +506,7 @@ definirPericias();
 		case 0:
 			colocarAleatNoArray(compMaiores,personagem.complicacoesMa);
 			colocarAleatNoArray(compMaiores,personagem.complicacoesMa);
-			personagem.complicacoesMe= 0;
+			
 			break;
 		case 1:
 			colocarAleatNoArray(compMaiores,personagem.complicacoesMa);
@@ -438,7 +518,7 @@ definirPericias();
 			colocarAleatNoArray(compMenores,personagem.complicacoesMe);
 			colocarAleatNoArray(compMenores,personagem.complicacoesMe);
 			colocarAleatNoArray(compMenores,personagem.complicacoesMe);
-			personagem.complicacoesMa= 0;
+			
 			break;
 		default:
 			console.log("Erro ao definir complicações.");
@@ -599,12 +679,12 @@ definirComp()
 		}
 }
 definirVantagens();
-/************ CARAC DERIVADAS / EQUIPAMENTOS ***********************************/
+/************ CARAC DAS / EQUIPAMENTOS ***********************************/
 	function definirDerivadas(){
 
-	 	personagem.movimento=6;
+	 	personagem.movimento+=6;
 	 	
-	 	personagem.pericias.lutar>0 ? personagem.aparar=2+personagem.pericias.lutar+1 : personagem.aparar=2;
+	 	personagem.pericias.lutar>0 ? personagem.aparar+=2+personagem.pericias.lutar+1 : personagem.aparar+=2;
 	 	/* lógica do aparar
 		lutar  dado  metade
 			0   /  0
@@ -615,7 +695,7 @@ definirVantagens();
 	 		5 	D12 6
 	 	*/
 
-	 	personagem.resistencia=2+personagem.atributos.vigor+1;
+	 	personagem.resistencia+=2+personagem.atributos.vigor+1;
 	 	/* lógica da resistencia
 		vigor  dado  metade  total
 	 		1 	D4 	2 			4
@@ -716,6 +796,9 @@ listaPoderes.push(
 		function colocarDados(variavel) {
 			let resposta;
 			switch(variavel){
+				case 0:
+					resposta= '<img class="iconeDados" src="d4c.png"><img class="iconeDados" src="d6c.png"><img class="iconeDados" src="d8c.png"><img class="iconeDados" src="d10c.png"><img class="iconeDados" src="d12c.png">';
+					break;
 				case 1:
 					resposta= '<img class="iconeDados" src="d4.png"><img class="iconeDados" src="d6c.png"><img class="iconeDados" src="d8c.png"><img class="iconeDados" src="d10c.png"><img class="iconeDados" src="d12c.png">';
 					break;
@@ -728,12 +811,10 @@ listaPoderes.push(
 				case 4:
 					resposta= '<img class="iconeDados" src="d4.png"><img class="iconeDados" src="d6.png"><img class="iconeDados" src="d8.png"><img class="iconeDados" src="d10.png"><img class="iconeDados" src="d12c.png">';
 					break;
-				case 5:
+				default:
 					resposta= '<img class="iconeDados" src="d4.png"><img class="iconeDados" src="d6.png"><img class="iconeDados" src="d8.png"><img class="iconeDados" src="d10.png"><img class="iconeDados" src="d12.png">';
 					break;
-				default:
-					resposta= '<img class="iconeDados" src="d4c.png"><img class="iconeDados" src="d6c.png"><img class="iconeDados" src="d8c.png"><img class="iconeDados" src="d10c.png"><img class="iconeDados" src="d12c.png">';
-			}
+				}
 
 		 return resposta;
 		} /* fim colocar dados */
@@ -783,11 +864,12 @@ listaPoderes.push(
 		 /* transforma o array em string e adiciona vírgulas e ponto final */
 		 let stringAux='';
 		for (var i=0;i<personagem.complicacoesMa.length;i++){
+
 			stringAux+=personagem.complicacoesMa[i];
 			if (i==personagem.complicacoesMa.length-1) {
 				stringAux+='.';
 			}else{
-				stringAux+=', ';
+				stringAux+=',<br/>';
 			}
 		 }
 
@@ -798,7 +880,7 @@ listaPoderes.push(
 			if (i==personagem.complicacoesMe.length-1) {
 				stringAux+='.';
 			}else{
-				stringAux+=', ';
+				stringAux+=',<br/>';
 			}
 		 }
 		 personagem.complicacoesMe=stringAux;
@@ -809,7 +891,7 @@ listaPoderes.push(
 			if (i==personagem.vantagens.length-1) {
 				stringAux+='.';
 			}else{
-				stringAux+=', ';
+				stringAux+=',<br/>';
 			}
 		 }
 		 personagem.vantagens=stringAux;
@@ -863,18 +945,24 @@ listaPoderes.push(
 		+" Movimento: <span>"+personagem.movimento+"</span>, Aparar: <span>"+personagem.aparar+"</span>, Resistência: <span>"+personagem.resistencia+"</span>."
 		+" 	<br/>");
 
+		if (personagem.raciais) {
+		 $ ('#ficha'+personagem.pos).append(
+		"<strong>Raciais:</strong><br/> "
+		+"<span>"+personagem.raciais+"</span><br/>");}
+
+
 		 if (personagem.complicacoesMa) {
 		 $ ('#ficha'+personagem.pos).append(
-		"<strong>Complicações Maiores:</strong> "
+		"<strong>Complicações Maiores:</strong><br/> "
 		+"<span>"+personagem.complicacoesMa+"</span><br/>");}
 
 		 if (personagem.complicacoesMe) {
 		 $ ('#ficha'+personagem.pos).append(
-		" 	<strong>Complicações Menores:</strong> "
+		" 	<strong>Complicações Menores:</strong><br/> "
 		+" 	<span>"+personagem.complicacoesMe+"</span><br/>");}
 
 		$ ('#ficha'+personagem.pos).append(
-		" 	<strong>Vantagens:</strong> <span>"+personagem.vantagens+"</span><br/><br/>"
+		" 	<strong>Vantagens:</strong><br/> <span>"+personagem.vantagens+"</span><br/><br/>"
 		);
 		$ ('#ficha'+personagem.pos).append("<div id='boxPericias"+personagem.pos+"' class='alinhaDireita'></div>");
 		if (personagem.pericias.foco) {$ ('#boxPericias'+personagem.pos).append("<span>Foco : "+personagem.pericias.foco+"</span> <br>")};
