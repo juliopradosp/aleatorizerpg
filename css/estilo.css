@@ -103,20 +103,20 @@ nav ul li a.nav-link{
 
 /* Cards geradores *******************************/
 
-.card li.estado{
-	list-style: none;
-}
 
 .finalizado{
 	color: green;
+	list-style: none;
 }
 
 .utilizavel{
 	color: orange;
+	list-style: none;
 }
 
 .emConstrucao{
 	color: red;
+	list-style: none;
 }
 
 
